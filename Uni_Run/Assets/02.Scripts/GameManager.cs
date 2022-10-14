@@ -14,8 +14,12 @@ public class GameManager : MonoBehaviour
     public bool isGameover = false; // 게임오버 상태
     public Text scoreText; // 점수를 출력할 UI 텍스트
     public GameObject gameoverUi; // 게임오버 시 활성화할 UI 게임 오브젝트
+    public GameObject pauseUi;
+    private bool pause = false;
+    public GameObject[] lifes;
 
     private int score = 0; // 게임 점수
+
 
     // 게임 시작과 동시에 싱글턴을 구성
     // Start is called before the first frame update
@@ -37,16 +41,34 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     // Update is called once per frame
     void Update()
     {
         // 게임오버 상태에서 게임을 재시작할 수 있게 하는 처리
-        if(isGameover && Input.GetMouseButtonDown(0))
+        if (pause == false && Input.GetKeyDown(KeyCode.Escape) && !isGameover)
+        {
+            pauseUi.SetActive(true);
+            pause = true;
+            Time.timeScale = 0f;
+        }
+        else if (pause == true && Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseUi.SetActive(false);
+            pause = false;
+            Time.timeScale = 1f;
+        }
+
+        if (isGameover && Input.GetMouseButtonDown(0))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-
+        int hs = GameObject.Find("Player").GetComponent<PlayerController>().health;
+        for (int i = 0; i < lifes.Length; i++)
+        {
+            this.lifes[i].SetActive(false);
+        }
+        for (int i = 0; i < hs; i++)
+            this.lifes[i].SetActive(true);
     }
 
     // 점수를 증가시키는 메서드

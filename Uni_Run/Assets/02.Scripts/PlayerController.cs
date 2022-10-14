@@ -11,10 +11,12 @@ public class PlayerController : MonoBehaviour
     private int jumpCount = 0; // 누적 점프 횟수
     private bool isGrounded = false; // 바닥에 닿았는지 나타냄
     private bool isDead = false; // 사망 상태
+    public int health= 3;
 
     private Rigidbody2D playerRigidbody; // 사용할 리지드바디 컴포넌트
     private Animator animator; // 사용할 애니메이터 컴포넌트
     private AudioSource playerAudio; // 사용할 오디오 소스 컴포넌트
+
 
     private void Start()
         // 초기화
@@ -79,9 +81,21 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
         // 트리거 콜라이더를 가진 장애물과의 충돌을 감지
     {
-        if(other.tag == "Dead" && !isDead)
+        if (other.gameObject.tag == "Collect")
+        {
+            GameManager.instance.AddScore(1);
+            other.gameObject.SetActive(false);
+        }
+
+        else if (other.tag == "Dead" && !isDead)
         {
             //충돌한 상대방의 태그가 Dead이며 아직 사망하지 않았다면 Die()실행
+            health -= 1;
+            if(health == 0)
+            { Die(); }
+        }
+        else if(other.tag == "Death")
+        {
             Die();
         }
     }
