@@ -15,4 +15,8 @@ public class Button : MonoBehaviour
         Application.Quit();
         Debug.Log("Button Click");
     }
+    public void OnClickLoad()
+    {
+        SceneManager.LoadScene("Sub");
+    }
 }

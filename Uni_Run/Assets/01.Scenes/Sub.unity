@@ -1529,7 +1529,7 @@ SpriteRenderer:
   m_SortingLayerID: 1878872779
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1224468984, guid: d7159a67a357942ef8404ce06e20db64, type: 3}
+  m_Sprite: {fileID: 7166236263522030466, guid: e362bc6a7c79fce4db16d145d43a5550, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1549,7 +1549,7 @@ Transform:
   m_GameObject: {fileID: 1524070923}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6, y: 2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1568,9 +1568,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.4}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.14
 --- !u!82 &1524070928
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1714,12 +1714,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a619a0f460d35734e93a8bc596becdf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
-  lifes:
-  - {fileID: 1638796266}
-  - {fileID: 928428765}
-  - {fileID: 1622037859}
-  health: 0
 --- !u!1 &1622037859
 GameObject:
   m_ObjectHideFlags: 0
